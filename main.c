@@ -12,6 +12,7 @@ You should have received a copy of the GNU General Public License along with thi
 #include <stdio.h>
 #include "makemove.h"
 #include "movegen.h"
+#include "perf.h"
 
 // attack tables
 U64 pawn_attacks[2][64];
@@ -31,19 +32,12 @@ int main(int argc, char *argv[]) {
   init_all();
 
   //test-fen
-  char s[] = "8/7N/1ppr2p1/p1k2pP1/2B2K1P/8/4P3/8 b - - 0 1";
-
+  char s[] = "r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10";
   Board b;
   setup_from_fen(s, &b);
 
-  print_move(enc_move(A2, A4, P, 0, 0, 1, 0, 0));
-  moves move_list;
-
-  move_list.count = 0;
-  generate_forcing_moves(&move_list, &b);
-  generate_moves(&move_list, &b);
-  //print_move_list(&move_list);
-
+  //perf_test();
+  perf_head(&b, 7);
   return 0;
 }
 
