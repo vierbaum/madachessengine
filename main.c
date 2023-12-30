@@ -13,6 +13,7 @@ You should have received a copy of the GNU General Public License along with thi
 #include "makemove.h"
 #include "movegen.h"
 #include "perf.h"
+#include "eval.h"
 
 // attack tables
 U64 pawn_attacks[2][64];
@@ -32,12 +33,12 @@ int main(int argc, char *argv[]) {
   init_all();
 
   //test-fen
-  char s[] = "r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10";
+  char s[] = "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 1";
   Board b;
   setup_from_fen(s, &b);
+  printf("%d, %d\n", b.side, white);
 
-  //perf_test();
-  perf_head(&b, 7);
+  printf("%d\n", eval_position(&b));
   return 0;
 }
 
