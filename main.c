@@ -14,6 +14,7 @@ You should have received a copy of the GNU General Public License along with thi
 #include "movegen.h"
 #include "perf.h"
 #include "eval.h"
+#include "search.h"
 
 // attack tables
 U64 pawn_attacks[2][64];
@@ -33,12 +34,11 @@ int main(int argc, char *argv[]) {
   init_all();
 
   //test-fen
-  char s[] = "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 1";
+  char s[] = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
   Board b;
   setup_from_fen(s, &b);
-  printf("%d, %d\n", b.side, white);
 
-  printf("%d\n", eval_position(&b));
+  printf("%d\n", alphaBeta(&b, -1000, 1000, 10));
   return 0;
 }
 

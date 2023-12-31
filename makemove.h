@@ -97,25 +97,25 @@ static inline int make_move(int move, Board *board) {
 
   if (get_castling(move)) {
     switch (np) {
-      case (G1):
-        remove_bit(board->bitboards + R, H1);
-        set_piece(board->bitboards + R, F1);
-        break;
+    case (G1):
+      remove_bit(board->bitboards + R, H1);
+      set_piece(board->bitboards + R, F1);
+      break;
 
-      case (C1):
-        remove_bit(board->bitboards + R, A1);
-        set_piece(board->bitboards + R, D1);
-        break;
+    case (C1):
+      remove_bit(board->bitboards + R, A1);
+      set_piece(board->bitboards + R, D1);
+      break;
 
-      case (G8):
-        remove_bit(board->bitboards + r, H8);
-        set_piece(board->bitboards + r, F8);
-        break;
+    case (G8):
+      remove_bit(board->bitboards + r, H8);
+      set_piece(board->bitboards + r, F8);
+      break;
 
-      case (C8):
-        remove_bit(board->bitboards + r, A8);
-        set_piece(board->bitboards + r, D8);
-        break;
+    case (C8):
+      remove_bit(board->bitboards + r, A8);
+      set_piece(board->bitboards + r, D8);
+      break;
     }
   }
   // updating castling
