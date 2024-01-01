@@ -1,6 +1,19 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
+#ifdef _MSC_VER
+#  include <intrin.h>
+#  define __builtin_popcountll __popcnt64
+static int ffsll_mimic(long long value) {
+    unsigned long index;
+    if (_BitScanForward64(&index, value)) {
+        return (int)index + 1;
+    }
+    return 0;
+}
+#  define __builtin_ffsll ffsll_mimic
+#endif
+
 #include "magic_numbers.h"
 #include <stdio.h>
 #include <string.h>

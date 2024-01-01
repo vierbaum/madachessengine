@@ -30,24 +30,27 @@ U64 occupancies[3];
 void init_all();
 
 
-int main(int argc, char *argv[]) {
-  init_all();
+int main(int argc, char* argv[]) {
+	init_all();
 
-  //test-fen
-  char s[] = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-  Board b;
-  setup_from_fen(s, &b);
+	//test-fen
+	char s[] = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+	Board b;
+	setup_from_fen(s, &b);
 
-  printf("%d\n", alphaBeta(&b, -1000, 1000, 10));
-  return 0;
+	perf_test();
+
+	//printf("%d\n", alphaBeta(&b, -1000, 1000, 8));
+	system("pause");
+	return 0;
 }
 
 void init_all() {
-  init_pawn_attacks();
-  init_knight_attacks();
-  init_king_attacks();
-  init_slider_attacks();
+	init_pawn_attacks();
+	init_knight_attacks();
+	init_king_attacks();
+	init_slider_attacks();
 
-  // clearing bitboards
-  for (int i = 0; i <= k; i++) bitboards[i] = 0ULL;
+	// clearing bitboards
+	for (int i = 0; i <= k; i++) bitboards[i] = 0ULL;
 }
